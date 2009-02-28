@@ -15,6 +15,7 @@ Still To Do
 - Forgot password functionality
 - Email activation
 - Change password functionality
+- Add check for rememberme cookie in the restrict access method
 
 
 

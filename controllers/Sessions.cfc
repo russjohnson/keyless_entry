@@ -25,18 +25,13 @@
 		<cfargument name="login" type="any" required="true" />
 		<cfargument name="password" type="any" required="true" />
 		
-		<!--- right here is where we want to decrypt the password value --->
-		
 		<!--- todo: need to look into moving the authentication method into the user model --->
 		
-		<cftry>
-			<cfset authUser = model("user").findOneByLogin(arguments.login)>
-				
-			<cfcatch type="Wheels.RecordNotFound">
-				<cfset flashInsert(error="Login failed, please try again")>
-				<cfset redirectTo(action="new")>
-			</cfcatch>
-		</cftry>
+		<cfset authUser = model("user").findOneByLogin(arguments.login)>
+			
+		<cfif isboolean(authUser) and Not authUser>
+			<cfset failedLogin()>
+		</cfif>
 		
 		<cfif authUser.isPassword(arguments.password)>
 			<cfset session.currentUser = authUser>
@@ -48,6 +43,18 @@
 			<cfset flashInsert(error="Login failed, please try again")>
 			<cfset redirectTo(action="new")>
 		</cfif>
+	</cffunction>
+	
+	<cffunction name="successfulLogin" access="private">
+		
+	</cffunction>
+	
+	<cffunction name="failedLogin" access="private">
+		<!---
+			TODO : would like to add a method call here to update a failed login table...
+		--->
+		<cfset flashInsert(error="Login failed, please try again")>
+		<cfset redirectTo(action="new")>
 	</cffunction>
 	
 </cfcomponent>
