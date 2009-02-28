@@ -43,7 +43,7 @@
 			<cfif structKeyExists(params,"rememberMe")>
 				<cfcookie name="app.rememberme" value="true" expires="14" />
 			</cfif>
-			<cfset redirectTo(controller="snippets", action="index")>
+			<cfset redirectTo(controller="accounts", action="index")>
 		<cfelse>
 			<cfset flashInsert(error="Login failed, please try again")>
 			<cfset redirectTo(action="new")>
