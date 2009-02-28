@@ -1,13 +1,17 @@
 Still VERY early.
 
+This is a CFWheels application that has the keyless_entry authentication code in it.
+Eventually the authentication will be packaged as a plugin but the plugin system
+in Wheels just isn't quite mature enough for that yet.
+
 Alot of work still to come.
 
 
 Still To Do
 --------------------
-- Password encryption
 - Forgot password functionality
 - Email activation
+- Change password functionality
 
 
 
@@ -15,6 +19,8 @@ Still To Do
 --------------------
 Added restrict access method to parent controller file so it can be called
 from any controller as a filter
+
+Added password encryption to the user
 
 
 

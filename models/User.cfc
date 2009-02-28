@@ -3,18 +3,18 @@
 	<!--- All initialization related tasks are done in the "init" function which is run the first time the model is requested. --->
 	<cffunction name="init">
 		<cfset validatesPresenceOf(property="login", message="Username is required")>
+		<cfset validatesPresenceOf(property="email" , message="Email is required.")>
 		<cfset validatesPresenceOf(property="password", message="Password is required")>
 		<cfset validatesConfirmationOf(property="password",message="The passwords you entered did not match.") />
 		<cfset validatesUniquenessOf(property="login", message="You have entered a username that is already in our system.", when="onCreate")>
-		<!--- this callback is for encypting the password after validation and before saving the user 
-		<cfset beforeSave("setPassword") /> --->
+		<!--- this callback is for encypting the password after validation and before saving the user --->
+		<cfset beforeSave("setPassword") />
 	</cffunction>
 	
 	<cffunction name="setPassword">
-		<!---><cfif structKeyExists(this,"password")>
+		<cfif structKeyExists(this,"password")>
 	    	<cfset this.password = hash(this.password, "SHA-512") /> 			
-		</cfif>--->
-		<cfset i = 1/>
+		</cfif>
 	</cffunction>
 	
 	<cffunction name="isPassword">

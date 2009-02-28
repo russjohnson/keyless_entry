@@ -9,6 +9,10 @@
 		</div>	
 		
 		<div>
+			#textField(objectName='user', property='email', label='Email <em>*</em>')#
+		</div>	
+		
+		<div>
 			#passwordField(objectName='user', property='password', label='Password <em>*</em>')#
 		</div>	
 

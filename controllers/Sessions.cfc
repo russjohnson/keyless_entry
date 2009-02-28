@@ -38,7 +38,7 @@
 			</cfcatch>
 		</cftry>
 		
-		<cfif authUser.password is arguments.password>
+		<cfif authUser.isPassword(arguments.password)>
 			<cfset session.currentUser = authUser>
 			<cfif structKeyExists(params,"rememberMe")>
 				<cfcookie name="app.rememberme" value="true" expires="14" />
