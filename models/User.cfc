@@ -23,4 +23,11 @@
 	    <cfreturn (compare(hash(arguments.password, "SHA-512"), this.password) EQ 0) />
 	</cffunction>
 	
+	<cffunction name="hasRole">
+		<cfargument name="role" type="any" required="true" />
+		<!---
+			TODO : hasRole method needs to check session.currentUser for a role somehow
+		--->
+	</cffunction>
+	
 </cfcomponent>
