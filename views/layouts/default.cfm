@@ -7,7 +7,9 @@
 	<cfoutput>
 		
 		<div>
-			#linkTo(text="New User", controller="users", action="new")# | 
+			<cfif structKeyExists(session,"currentUser")>
+				#session.currentUser.login# |
+			</cfif>
 			#linkTo(text="Logout", route="logout")# | 
 			#linkTo(text="login", route="login")#
 		</div>
