@@ -7,6 +7,9 @@ in Wheels just isn't quite mature enough for that yet.
 Alot of work still to come.
 
 
+Contains CFWheels SVN revision 2045 code.
+
+
 Still To Do
 --------------------
 - Forgot password functionality
@@ -21,6 +24,8 @@ Added restrict access method to parent controller file so it can be called
 from any controller as a filter
 
 Added password encryption to the user
+
+Added unique validations on the login and email fields to avoid duplicates
 
 
 
