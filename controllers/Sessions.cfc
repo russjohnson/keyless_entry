@@ -8,7 +8,7 @@
 			<cfset flashInsert(error="Login failed, please try again")>
 			<cfset redirectTo(action="new")>
 		<cfelse>
-			<cfset password_authentication(params.login, params.password) />
+			<cfset passwordAuthentication(params.login, params.password) />
 		</cfif>
 	</cffunction>
 	
@@ -21,7 +21,7 @@
 	
 	<!--- private functions --->
 	
-	<cffunction name="password_authentication" access="private">
+	<cffunction name="passwordAuthentication" access="private">
 		<cfargument name="login" type="any" required="true" />
 		<cfargument name="password" type="any" required="true" />
 		

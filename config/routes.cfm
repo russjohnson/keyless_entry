@@ -9,4 +9,4 @@
 <!--- authentication routes --->
 <cfset addRoute(name="login", pattern="/login", controller="sessions", action="new") />
 <cfset addRoute(name="logout", pattern="/logout", controller="sessions", action="delete") />
-<cfset addRoute(name="signup", pattern="/signup", controller="users", action="new") />	
+<cfset addRoute(name="signup", pattern="/signup", controller="profiles", action="new") />	
