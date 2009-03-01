@@ -8,7 +8,7 @@
 		
 		<div>
 			<cfif structKeyExists(session,"currentUser")>
-				#session.currentUser.login# |
+				#linkTo(text="#session.currentUser.login#", controller="profiles", action="show")# |
 			</cfif>
 			#linkTo(text="Logout", route="logout")# | 
 			#linkTo(text="login", route="login")#

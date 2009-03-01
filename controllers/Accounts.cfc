@@ -1,7 +1,7 @@
 <cfcomponent extends="controller">
 
 	<cffunction name="init">
-		<cfset filters(through="restrictAccess")>
+		<cfset filters(through="loginRequired")>
 	</cffunction>
 
 	<cffunction name="index">

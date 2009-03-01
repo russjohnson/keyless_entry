@@ -1,6 +1,9 @@
 <cfcomponent extends="wheels.Controller">
 	
 	<cffunction name="loginRequired">
+		<!---
+			TODO : there should be a check here for the rememberme cookie
+		--->
 		<cfif Not structKeyExists(session,"currentUser")>
 			<cfset flashInsert(error="You do not have permissions to do that!")>
 			<cfset redirectTo(controller="sessions", action="new")>
