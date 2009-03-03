@@ -9,7 +9,7 @@
 		<cfset validatesConfirmationOf(property="password",message="The passwords you entered did not match.") />
 		<cfset validatesUniquenessOf(property="login", message="You have entered a username that is already in our system.", when="onCreate")>
 		<!--- this callback is for encypting the password after validation and before saving the user --->
-		<cfset beforeSave("setPassword") />
+		<cfset beforeCreate("setPassword") />
 	</cffunction>
 	
 	<cffunction name="setPassword">
@@ -25,9 +25,12 @@
 	
 	<cffunction name="hasRole">
 		<cfargument name="role" type="any" required="true" />
-		<!---
-			TODO : hasRole method needs to check session.currentUser for a role somehow
-		--->
+		
+		<cfif listFind(this.assignedRoles, arguments.role)>
+			<cfreturn true>
+		<cfelse>
+			<cfreturn false>
+		</cfif>
 	</cffunction>
 	
 </cfcomponent>

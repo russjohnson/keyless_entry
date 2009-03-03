@@ -10,6 +10,8 @@
 			<cfif structKeyExists(session,"currentUser")>
 				#linkTo(text="#session.currentUser.login#", controller="profiles", action="show")# |
 			</cfif>
+			#linkTo(text="Manage Users", controller="users")# | 
+			#linkTo(text="Roles", controller="roles")# | 
 			#linkTo(text="Logout", route="logout")# | 
 			#linkTo(text="login", route="login")#
 		</div>

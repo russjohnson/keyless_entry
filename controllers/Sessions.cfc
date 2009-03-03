@@ -40,7 +40,7 @@
 			</cfif>
 			<cfset redirectTo(controller="accounts", action="index")>
 		<cfelse>
-			<cfset flashInsert(error="Login failed, please try again")>
+			<cfset flashInsert(error="Login failed, please try again wrong password")>
 			<cfset redirectTo(action="new")>
 		</cfif>
 	</cffunction>
@@ -53,7 +53,7 @@
 		<!---
 			TODO : would like to add a method call here to update a failed login table...
 		--->
-		<cfset flashInsert(error="Login failed, please try again")>
+		<cfset flashInsert(error="Login failed, please try again - i failed you")>
 		<cfset redirectTo(action="new")>
 	</cffunction>
 	
