@@ -7,6 +7,41 @@ h2. Current Features
 * Generates basic controllers, models and views to get up and running quickly.
 * Provides basic user authentication.
 * Provides a sign-up form to allow new user creation.
-* Adds methods to your Wheels app to set as filters to require login.
+* Adds methods to your Wheels app to set as filters to require login, etc.
+* Hashes passwords so they are not visible in the database
 
 h2. Instructions
+
+Create the db tables
+
+Generate the code
+
+Add these to your routes file
+
+Filters can be added to controllers, etc.
+
+
+
+CREATE TABLE `accounts` (
+  `id` int(11) NOT NULL auto_increment,
+  `name` varchar(100) NOT NULL,
+  `createdAt` datetime default NULL,
+  `updatedAt` datetime default NULL,
+  PRIMARY KEY  (`id`)
+)
+
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL auto_increment,
+  `accountID` int(11) default NULL,
+  `username` varchar(20) collate latin1_general_ci NOT NULL default '',
+  `password` varchar(255) collate latin1_general_ci NOT NULL default '',
+  `email` varchar(100) collate latin1_general_ci NOT NULL default '',
+  `firstName` varchar(50) collate latin1_general_ci NOT NULL default '',
+  `lastName` varchar(50) collate latin1_general_ci default NULL,
+  `admin` tinyint(1) default '0',
+  `lastLogin` int(11) default NULL,
+  `createdAt` datetime default NULL,
+  `updatedAt` datetime default NULL,
+  PRIMARY KEY  (`id`)
+) 
