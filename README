@@ -12,10 +12,3 @@
 </ul>
 
 <h2>Instructions</h2>
-
-
-
-<h2>Generate Code</h2>
-
-
-<a href="<cfoutput>#cgi.http_referer#</cfoutput>"><<< Go Back</a>
