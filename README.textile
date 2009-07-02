@@ -18,13 +18,13 @@ Generate the code
 
 Add these to your routes file
   
-  <code>
+<code>
   <cfset addRoute(name="login", pattern="login", controller="sessions", action="new")>
     
   <cfset addRoute(name="logout", pattern="logout", controller="sessions", action="destroy")>
     
   <cfset addRoute(name="signup", pattern="signup", controller="users", action="new")>
-  </code>
+</code>
   
 Filters can be added to controllers, etc.
 
