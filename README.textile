@@ -12,11 +12,11 @@ h2. Current Features
 
 h2. Instructions
 
-Create the db tables
+# Create the db tables
 
-Generate the code
+# Generate the code
 
-Add these to your routes file
+# Add these to your routes file
 
 <pre>
 <code>
@@ -28,7 +28,7 @@ Add these to your routes file
 </code>
 </pre>
   
-Filters can be added to controllers, etc.
+# Add filters can be added to controllers, etc.
 
 
 
