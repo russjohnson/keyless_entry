@@ -1,8 +1,8 @@
-<h1>Keyless Entry</h1>
+h1.Keyless Entry
 
-<p>This plugin will generate common user authentication code for your CFWheels application.</p>
+This plugin will generate common user authentication code for your CFWheels application.
 
-<h2>Current Features</h2>
+Current Features
 
 <ul>
   <li>Generates basic controllers, models and views to get up and running quickly.</li>
@@ -11,4 +11,4 @@
   <li>Adds methods to your Wheels app to set as filters to require login.</li>
 </ul>
 
-<h2>Instructions</h2>
+Instructions
