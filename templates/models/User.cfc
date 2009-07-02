@@ -1,19 +1,19 @@
 <cfcomponent extends="Model">
 
 	<cffunction name="init">
-	  
-	  <cfset belongsTo(name="account")>
-	  
-		<cfset validatesPresenceOf(property="login", message="Username is required")>
+	  <cfset validatesPresenceOf(property="username", message="Username is required")>
 		<cfset validatesPresenceOf(property="email" , message="Email is required.")>
 		<cfset validatesPresenceOf(property="password", message="Password is required")>
-		<cfset validatesUniquenessOf(property="login", message="That login already exists.")>
+		<cfset validatesPresenceOf(property="firstName" , message="First name is required")>
+		<cfset validatesPresenceOf(property="lastName" , message="Last name is required")>
+		<cfset validatesUniquenessOf(property="username", message="That username that is already in our system.", when="onCreate")>
 		<cfset validatesUniquenessOf(property="email", message="That email already exists.")>
 		<cfset validatesConfirmationOf(property="password",message="The passwords you entered did not match.") />
-		<cfset validatesUniquenessOf(property="login", message="You have entered a username that is already in our system.", when="onCreate")>
+	  
 		<!--- this callback is for encypting the password after validation and before saving the user --->
 		<cfset beforeCreate("setPassword") />
 	</cffunction>
+	
 	
 	<!--- KEYLESS ENTRY METHODS --->
 	

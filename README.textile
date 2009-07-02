@@ -27,7 +27,7 @@ h2. Instructions
 # Add filters can be added to controllers, etc.
 
 
-
+<pre>
 CREATE TABLE `accounts` (
   `id` int(11) NOT NULL auto_increment,
   `name` varchar(100) NOT NULL,
@@ -35,8 +35,9 @@ CREATE TABLE `accounts` (
   `updatedAt` datetime default NULL,
   PRIMARY KEY  (`id`)
 )
+</pre>
 
-
+<pre>
 CREATE TABLE `users` (
   `id` int(11) NOT NULL auto_increment,
   `accountID` int(11) default NULL,
@@ -51,3 +52,10 @@ CREATE TABLE `users` (
   `updatedAt` datetime default NULL,
   PRIMARY KEY  (`id`)
 ) 
+</pre>
+
+TODO
+
+* Move password encryption to plugin file
+* Create signup form and methods
+* Create email activation code
