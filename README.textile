@@ -13,11 +13,8 @@ h2. Current Features
 h2. Instructions
 
 # Create the db tables
-
 # Generate the code
-
 # Add these to your routes file
-
 <pre>
 <code>
   <cfset addRoute(name="login", pattern="login", controller="sessions", action="new")>
@@ -27,7 +24,6 @@ h2. Instructions
   <cfset addRoute(name="signup", pattern="signup", controller="users", action="new")>
 </code>
 </pre>
-  
 # Add filters can be added to controllers, etc.
 
 
