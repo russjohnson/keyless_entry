@@ -19,7 +19,7 @@
 	<cffunction name="destroy">
 		<!--- todo: need to check for the remember me flag here and delete cookie if needed --->
 		<cfset structDelete(session, 'currentUser') />
-		<cfset flashInsert(message='You have been logged out') />
+		<cfset flashInsert(success='You have been logged out') />
 		<cfset redirectTo(action="new") />
 	</cffunction>
 	
@@ -56,7 +56,7 @@
 		<cfset session.currentUser.save()>
 		
 		<!--- This redirects the user to the default account page but you can change this to go where you want --->
-		<cfset flashInsert(message="Logged in successfully!")>
+		<cfset flashInsert(success="Logged in successfully!")>
 		<cfset redirectTo(route="home")>
 	</cffunction>
 	

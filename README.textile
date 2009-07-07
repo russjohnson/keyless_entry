@@ -22,6 +22,8 @@ h2. Instructions
     <cfset addRoute(name="logout", pattern="logout", controller="sessions", action="destroy")>
     
     <cfset addRoute(name="signup", pattern="signup", controller="users", action="new")>
+      
+    <cfset addRoute(name="activate", pattern="activation/[activationCode]", controller="activations", action="activate")>
     </code>
   </pre>
 # Add filters can be added to controllers, etc.

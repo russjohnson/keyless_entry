@@ -18,5 +18,9 @@
 			<cfset redirectTo(route="home")>
 		</cfif>
 	</cffunction>
+	
+	<!---
+	 TODO Might look to add a function for checking if the user is the current user
+	--->
 
 </cfcomponent>
