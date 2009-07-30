@@ -20,7 +20,7 @@
 		<!--- todo: need to check for the remember me flag here and delete cookie if needed --->
 		<cfset structDelete(session, 'currentUser') />
 		<cfset flashInsert(success='You have been logged out') />
-		<cfset redirectTo(action="new") />
+		<cfset redirectTo(route="home") />
 	</cffunction>
 	
 	<!--- private methods --->
@@ -35,7 +35,7 @@
 			<cfset $failedLogin()>
 		</cfif>
 		
-		<cfif authUser.isPassword(arguments.password)>
+		<cfif authUser.isPassword(arguments.password) AND authUser.activatedAt is NOT "">
 			<cfset $successfulLogin(authUser)>
 		<cfelse>
 			<cfset $failedLogin()>
@@ -52,11 +52,11 @@
 		</cfif>
 	   
 	  <!--- Update the lastLogin column --->
-		<cfset session.currentUser.setLastLogin = now()>
+		<cfset session.currentUser.lastLogin = now()>
 		<cfset session.currentUser.save()>
 		
 		<!--- This redirects the user to the default account page but you can change this to go where you want --->
-		<cfset flashInsert(success="Logged in successfully!")>
+		<cfset flashInsert(success="Hello <strong>#session.currentUser.firstName#</strong>! You are now signed in.")>
 		<cfset redirectTo(route="home")>
 	</cffunction>
 	

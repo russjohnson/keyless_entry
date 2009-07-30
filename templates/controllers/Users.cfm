@@ -60,7 +60,7 @@
 		  <cfset sendEmail(from="admin@workingwithcfml.com", to=user.email, subject="WorkingWithCFML.com account activation", template="new_user_activation_email", activationCode=user.activationCode) />
 		  
 			<cfset flashInsert(success="Thanks for signing up! You cannot login yet however. We have sent you an email with a link to verify your email address.")>
-      <cfset redirectTo(route="home")>
+      <cfset redirectTo(route="login")>
 		<cfelse>
 			<cfset flashInsert(error="There was an error creating the user.")>
 			<cfset renderPage(action="new")>
@@ -73,7 +73,7 @@
 		<!--- Verify that the user updates successfully --->
 		<cfif user.update(params.user)>
 			<cfset flashInsert(success="The user was updated successfully.")>	
-      <cfset redirectTo(action="index")>
+      <cfset redirectTo(action="show", key=user.id)>
 		<cfelse>
 			<cfset flashInsert(error="There was an error updating the user.")>
 			<cfset renderPage(action="edit")>
@@ -94,3 +94,4 @@
 	</cffunction>
 	
 </cfcomponent>
+

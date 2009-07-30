@@ -47,19 +47,19 @@
 	  <cfset var loc = {}>
 	    
 	  <!--- Check the environment for "design" or "development" --->
-		<cfset $checkEnvironment()>
+		<cfset $checkDevEnv()>
 		  
 		<!--- Setup the information for the user --->
 		<cfset loc.message = "">
 		  
 		<!--- Create the model --->
-		<cfset loc.message = loc.message & $generateModel('user') & "<br/>">
+		<cfset loc.message = loc.message & $generateModelFile('user') & "<br/>">
 		<!--- Create the controllers --->
-		<cfset loc.message = loc.message & $generateController('user') & "<br/>">
-		<cfset loc.message = loc.message & $generateController('session') & "<br/>">
-		<cfset loc.message = loc.message & $generateController('activation') & "<br/>">
+		<cfset loc.message = loc.message & $generateControllerFile('user') & "<br/>">
+		<cfset loc.message = loc.message & $generateControllerFile('session') & "<br/>">
+		<cfset loc.message = loc.message & $generateControllerFile('activation') & "<br/>">
 		<!--- Create the view folders--->
-		<cfset loc.message = loc.message & $generateViews('user') & "<br/>">
+		<cfset loc.message = loc.message & $generateViewFolders('user') & "<br/>">
 		
 	  <!--- Create the view files --->
 	  <cfset loc.message = loc.message & $generateViewFile('index','user') & "<br/>">
@@ -67,23 +67,23 @@
 	  <cfset loc.message = loc.message & $generateViewFile('edit','user') & "<br/>">
 	  <cfset loc.message = loc.message & $generateViewFile('show','user') & "<br/>">
 	  
-	  <cfset loc.message = loc.message & $generateViews('session') & "<br/>">
+	  <cfset loc.message = loc.message & $generateViewFolders('session') & "<br/>">
 	  <cfset loc.message = loc.message & $generateViewFile('new','session') & "<br/>">
 	 
 	 <cfreturn loc.message>
 	</cffunction>
 	
 	
-	<cffunction name="$generateModel" access="public" returnType="string" output="false">
+	<cffunction name="$generateModelFile" access="public" returnType="string" output="false">
 		<cfargument name="name" type="string" required="true" hint="Name of the object">
 		  
 		<cfset var loc = {}>
 		
 		<!--- Check that the file has not been already created --->
-		<cfif $checkIfFileExists(arguments.name, "Model")>
+		<cfif $checkIfExists(arguments.name, "Model")>
 		    <cfset loc.message = "File 'models/#capitalize(arguments.name)#.cfc' already exists so skipped.">
 		<cfelse>
-			<cfset $moveFileToFolder(arguments.name, "Model")>
+			<cfset $moveFilesToFolder(arguments.name, "Model")>
 		    <cfset loc.message = "File 'models/#capitalize(arguments.name)#.cfc' created.">
 		</cfif>
 		
@@ -97,10 +97,10 @@
 		<cfset var loc = {}>
 		
 		<!--- Check that the file has not been already created --->
-		<cfif $checkIfFileExists(arguments.name, "ViewFile", arguments.modelName)>
+		<cfif $checkIfExists(arguments.name, "ViewFile", arguments.modelName)>
 		    <cfset loc.message = "File 'views/#lCase(pluralize(arguments.modelName))#/#arguments.name#.cfm' already exists so skipped.">
 		<cfelse>
-			<cfset $moveFileToFolder(arguments.name, "ViewFile", arguments.modelName)>
+			<cfset $moveFilesToFolder(arguments.name, "ViewFile", arguments.modelName)>
 		    <cfset loc.message = "File 'views/#lCase(pluralize(arguments.modelName))#/#arguments.name#.cfm' created.">
 		</cfif>
 		
@@ -108,16 +108,16 @@
 	</cffunction>
 	
 	
-	<cffunction name="$generateViews" access="public" returnType="string" output="false">
+	<cffunction name="$generateViewFolders" access="public" returnType="string" output="false">
 	  <cfargument name="name" type="string" required="true">
 	    
 		<cfset var loc = {}>
 		
 		<!--- Check that the folder to store the views has not been already created --->
-		<cfif $checkIfFileExists(arguments.name, "View")>
+		<cfif $checkIfExists(arguments.name, "View")>
 		    <cfset loc.message = "Folder 'views/#capitalize(pluralize(arguments.name))#/' already exists so skipped.">  
 		<cfelse>
-			<cfset $moveFileToFolder(arguments.name, "View")>
+			<cfset $moveFilesToFolder(arguments.name, "View")>
 			<cfset loc.message = "Folder 'views/#capitalize(pluralize(arguments.name))#/' created.">		
 		</cfif>
 	  
@@ -125,16 +125,16 @@
 	</cffunction>
 	
 	
-	<cffunction name="$generateController" access="public" returnType="string" output="false">
+	<cffunction name="$generateControllerFile" access="public" returnType="string" output="false">
 		<cfargument name="name" type="string" required="true" hint="Name of the object">
 		
 		<cfset var loc = {}>
 		
 		<!--- Check that the file has not been already created --->
-		<cfif $checkIfFileExists(arguments.name, "Controller")>
+		<cfif $checkIfExists(arguments.name, "Controller")>
 		    <cfset loc.message = "File 'controllers/#capitalize(pluralize(arguments.name))#.cfc' already exists so skipped.">
 		<cfelse>
-			<cfset $moveFileToFolder(arguments.name, "Controller")>
+			<cfset $moveFilesToFolder(arguments.name, "Controller")>
 		    <cfset loc.message = "File 'controllers/#capitalize(pluralize(arguments.name))#.cfc' created.">
 		</cfif>
 		
@@ -142,7 +142,7 @@
 	</cffunction>
 	
 	
-	<cffunction name="$checkIfFileExists" access="public" returntype="boolean" hint="Checks if the desired object is already created" output="false">
+	<cffunction name="$checkIfExists" access="public" returntype="boolean" hint="Checks if the desired object is already created" output="false">
 		<cfargument name="name" type="string" required="true" hint="Name of the file to search for">
 	  <cfargument name="type" type="string" required="true" hint="Type of file to look for (Model, View, Controller)">
 	  <cfargument name="modelName" type="string" required="false">
@@ -182,7 +182,7 @@
 	</cffunction>
 	
 	
-	<cffunction name="$moveFileToFolder" access="public" returntype="void" output="false">
+	<cffunction name="$moveFilesToFolder" access="public" returntype="void" output="false">
 		<cfargument name="name" type="string" required="true" hint="Name to set the file when moved">
 	  <cfargument name="type" type="string" required="true" hint="Type of file to move for (Model, View, Controller)">
 	  <cfargument name="modelName" type="string" required="false">
@@ -249,7 +249,7 @@
 	</cffunction>
 	
 	
-	<cffunction name="$checkEnvironment" access="public" returnType="void" hint="Checks that the enviroment is either 'design' or 'development'" output="false">
+	<cffunction name="$checkDevEnv" access="public" returnType="void" hint="Checks that the enviroment is either 'design' or 'development'" output="false">
 	
 		<!--- Only run this if the environment is not "design" or "development" --->
 		<cfif get("environment") IS NOT "design" AND get("environment") IS NOT "development">

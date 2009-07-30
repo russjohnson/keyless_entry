@@ -30,16 +30,6 @@ h2. Instructions
 
 
 <pre>
-CREATE TABLE `accounts` (
-  `id` int(11) NOT NULL auto_increment,
-  `name` varchar(100) NOT NULL,
-  `createdAt` datetime default NULL,
-  `updatedAt` datetime default NULL,
-  PRIMARY KEY  (`id`)
-)
-</pre>
-
-<pre>
 CREATE TABLE `users` (
   `id` int(11) NOT NULL auto_increment,
   `accountID` int(11) default NULL,
@@ -61,5 +51,3 @@ CREATE TABLE `users` (
 TODO
 
 * Move password encryption to plugin file
-* Create signup form and methods
-* Create email activation code
