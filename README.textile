@@ -24,7 +24,7 @@ h2. Instructions
 </code>
 </pre>
 # Filters can be added to controllers, etc.
-
+# Create users table with the following SQL
 
 <pre>
 CREATE TABLE `users` (
