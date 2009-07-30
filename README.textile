@@ -15,17 +15,17 @@ h2. Instructions
 # Create the db tables
 # Generate the code
 # Add these to your routes file
-  <pre>
-    <code>
-    <cfset addRoute(name="login", pattern="login", controller="sessions", action="new")>
+<pre>
+  <code>
+  <cfset addRoute(name="login", pattern="login", controller="sessions", action="new")>
+  
+  <cfset addRoute(name="logout", pattern="logout", controller="sessions", action="destroy")>
+  
+  <cfset addRoute(name="signup", pattern="signup", controller="users", action="new")>
     
-    <cfset addRoute(name="logout", pattern="logout", controller="sessions", action="destroy")>
-    
-    <cfset addRoute(name="signup", pattern="signup", controller="users", action="new")>
-      
-    <cfset addRoute(name="activate", pattern="activation/[activationCode]", controller="activations", action="activate")>
-    </code>
-  </pre>
+  <cfset addRoute(name="activate", pattern="activation/[activationCode]", controller="activations", action="activate")>
+  </code>
+</pre>
 # Add filters can be added to controllers, etc.
 
 
